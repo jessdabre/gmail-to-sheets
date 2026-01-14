@@ -1,6 +1,3 @@
-"""
-Gmail to Google Sheets Automation - Main Script
-"""
 import os
 import sys
 from gmail_service import GmailService

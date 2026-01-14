@@ -1,6 +1,3 @@
-"""
-Google Sheets Service - Handles Google Sheets API operations
-"""
 import os
 import pickle
 from google.auth.transport.requests import Request
@@ -86,7 +83,7 @@ class SheetsService:
             skipped = 0
             
             for email in new_emails:
-                # Double-check content length (safety check)
+                # Double-check content length
                 content = email['content']
                 if len(content) > 50000:
                     content = content[:45000] + "\n\n[Content truncated - exceeded character limit]"
@@ -98,7 +95,7 @@ class SheetsService:
                     subject = subject[:1000] + "... [truncated]"
                 
                 rows.append([
-                    email['from'][:50000],  # Safety check all fields
+                    email['from'][:50000], 
                     subject,
                     email['date'][:50000],
                     content
@@ -124,7 +121,6 @@ class SheetsService:
         
         except HttpError as error:
             print(f'An error occurred: {error}')
-            # If still getting character limit error, provide helpful message
             if '50000 characters' in str(error):
                 print("\nTroubleshooting: Some email content is still too long.")
                 print("This has been logged. Check email_sync.log for details.")
