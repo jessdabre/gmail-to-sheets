@@ -2,45 +2,7 @@ Gmail to Google Sheets Automation
 
 High-Level Architecture
 
-
-┌─────────────────┐
-│   Gmail Inbox   │
-│  (Unread only)  │
-└────────┬────────┘
-         │
-         │ Gmail API (OAuth 2.0)
-         ▼
-┌─────────────────┐
-│  gmail_service  │◄─── Fetches unread emails
-│      .py        │     Marks as read
-└────────┬────────┘
-         │
-         │ Raw email data
-         ▼
-┌─────────────────┐
-│  email_parser   │◄─── Extracts: From, Subject,
-│      .py        │     Date, Content (plain text)
-└────────┬────────┘
-         │
-         │ Parsed email objects
-         ▼
-┌─────────────────┐
-│ sheets_service  │◄─── Checks duplicates (state file)
-│      .py        │     Appends new rows
-└────────┬────────┘
-         │
-         │ Google Sheets API (OAuth 2.0)
-         ▼
-┌─────────────────┐
-│  Google Sheet   │
-│  [From|Subject  │
-│   |Date|Content]│
-└─────────────────┘
-
-State Persistence:
-┌─────────────────┐
-│email_state.txt  │◄─── Stores processed email IDs
-└─────────────────┘     (one ID per line)
+Refer HL Arch Image in proof folder.
 
 Setup Instructions
 1. Prerequisites
